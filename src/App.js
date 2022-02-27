@@ -1,10 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-
+import TodoList from './TodoList';
+import Pagination from './Pagination.js';
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Pagination />
+        <TodoList />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
