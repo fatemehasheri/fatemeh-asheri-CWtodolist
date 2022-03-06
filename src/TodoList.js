@@ -9,10 +9,14 @@ class TodoList extends Component{
         }
         this.addTodo = this.addTodo.bind(this)
     }
-
     addTodo(){
-        this.setState({list: [...this.state.list,this.state.value],value:' '})
+        this.setState({list: [this.state.value,...this.state.list],value:' '})
     }
+    componentDidMount(){
+        fetch("/json/todo.json").then((response) => {return response.json})
+        .then((res)=>(this.setState({list: res})))
+    }
+    
 
     render(){
         return(
@@ -22,7 +26,7 @@ class TodoList extends Component{
             <button onClick={this.addTodo}>Add</button>
             
             </li>
-            {this.state.list.map(todo=><li>{todo}</li>)}
+            {this.state.list.map(todo=><li key={todo.id}>{console.log(todo.todo)}</li>)}
         </ul>
         )
     }
